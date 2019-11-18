@@ -42,7 +42,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
 
-  config.action_mailer.default_url_options = { host: 'www.projections-privees', port: 80 }
+  config.action_mailer.default_url_options = { host: 'www.projections-privees'}
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
