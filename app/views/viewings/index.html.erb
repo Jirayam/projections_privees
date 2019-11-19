@@ -1,0 +1,13 @@
+<h1>Bienvenue sur projections privées</h1>
+<br>
+<%= link_to "créer une projection", new_host_viewing_path  %>
+<div>
+  <% @viewings.each do |viewing| %>
+  <div>
+    <h3> <%= link_to viewing_path(viewing) do %>
+      <%= viewing.movie_info %>
+      <% end %>
+    </h3>
+  <% end %>
+  </div>
+</div>
