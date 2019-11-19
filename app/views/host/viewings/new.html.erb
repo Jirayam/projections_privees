@@ -1,5 +1,5 @@
 <h1>Ajoute une projection:</h1>
-<%= simple_form_for @viewing do |f| %>
+<%= simple_form_for [:host, @viewing] do |f| %>
   <%= f.input :movie_info %>
   <%= f.input :capacity %>
   <%= f.input :date %>

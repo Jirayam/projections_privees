@@ -20,7 +20,7 @@ class Host::ViewingsController < ApplicationController
   def update
     @viewing = Viewing.find(params[:id])
     if @viewing.update(viewing_params)
-      redirect_to host_viewing_path(@viewing)
+      redirect_to viewing_path(@viewing)
     else
       render :edit
     end
