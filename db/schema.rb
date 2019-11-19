@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_165311) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "equipement"
+    t.string "photo"
     t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -48,7 +49,6 @@ ActiveRecord::Schema.define(version: 2019_11_19_165311) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.index ["user_id"], name: "index_viewings_on_user_id"
   end
 
