@@ -1,0 +1,8 @@
+<h1>Modifier une projection:</h1>
+<%= simple_form_for @viewing do |f| %>
+  <%= f.input :movie_info %>
+  <%= f.input :capacity %>
+  <%= f.input :date %>
+  <%= f.input :price %>
+  <%= f.submit "modifiez une projection", class: "btn btn-primary" %>
+<% end %>
