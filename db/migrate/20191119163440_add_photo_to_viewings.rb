@@ -1,5 +1,5 @@
-class AddPhotoToViewings < ActiveRecord::Migration[5.2]
+class AddPhotoToUsers < ActiveRecord::Migration[5.2]
   def change
-    add_column :viewings, :photo, :string
+    add_column :users, :photo, :string
   end
 end
