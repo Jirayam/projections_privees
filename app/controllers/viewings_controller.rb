@@ -22,11 +22,4 @@ class ViewingsController < ApplicationController
   def update
 
   end
-
-  private
-
-  def viewings_params
-    # ajouter :photo
-  params.require(:article).permit(:title, :body, :photo)
-  end
 end
