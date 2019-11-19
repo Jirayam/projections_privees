@@ -1,0 +1,5 @@
+<h1><%= @viewing.movie_info %></h1>
+<h2><%= @viewing.date %></h2>
+<br>
+<p><%= link_to "edit", edit_host_viewing_path(@viewing)%></p>
+<%= link_to "reserve ta projection", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
