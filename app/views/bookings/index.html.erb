@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Liste des projections que tu as demandé</h1>
+  <% @bookings.each do |booking| %>
+    <h2><%= booking.viewing.movie_info %></h2>
+    <p>Date de la projection: <%= booking.viewing.date %></p>
+  <% end %>
+</div>

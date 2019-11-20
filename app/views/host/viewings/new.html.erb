@@ -1,8 +1,12 @@
-<h1>Ajoute une projection:</h1>
-<%= simple_form_for [:host, @viewing] do |f| %>
-  <%= f.input :movie_info %>
-  <%= f.input :capacity %>
-  <%= f.input :date %>
-  <%= f.input :price %>
-  <%= f.submit "ajoutez une projection", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <h1>Ajoute une projection:</h1>
+  <%= simple_form_for [:host, @viewing] do |f| %>
+    <%= f.input :movie_info %>
+    <%= f.input :capacity %>
+    <%= f.input :date %>
+    <%= f.input :price %>
+    <%= f.submit "ajoutez une projection", class: "btn btn-primary" %>
+  <% end %>
+
+   <p><%= link_to "voir la liste des projections que je propose", host_bookings_path %></p>
+ </div>
