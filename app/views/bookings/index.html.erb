@@ -1,8 +1,9 @@
-<div class="container text-white">
+<div class="container">
   <h1>Liste des projections que tu as demandé</h1>
   <% @bookings.each do |booking| %>
     <h2><%= booking.viewing.movie_info %></h2>
     <p>La date de la projection: <%= booking.viewing.date %></p>
     <p>Le projectionneur est: <%= booking.user.username %></p>
   <% end %>
+  <%= link_to "Retour à l'accueil", root_path %>
 </div>
