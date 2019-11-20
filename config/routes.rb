@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'viewings#index'
   resources :viewings, only: [:show] do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:show, :create]
   end
+  resources :bookings, only: [:index]
   namespace :host do
     resources :viewings, only: [:new, :create, :edit, :update, :destroy]
     resources :bookings, only: [:index, :edit, :update]
