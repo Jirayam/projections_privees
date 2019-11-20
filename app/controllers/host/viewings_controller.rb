@@ -5,7 +5,7 @@ class Host::ViewingsController < ApplicationController
 
   def create
     @viewing = Viewing.new(viewing_params)
-    @viewing.user_id = 1
+    @viewing.user_id = current_user.id
     if @viewing.save
       redirect_to root_path
     else
