@@ -1,18 +1,38 @@
-<div class="container" id="custom-container" >
+<!-- <div class="container" id="custom-container" >
   <div class="d-flex justify-content-between">
 
-    <div id="cards">
-      <% @viewings.each do |viewing| %>
-        <h3> <%= link_to viewing_path(viewing) do %>
-          <%= viewing.movie_info %>
-          <% end %>
-        </h3>
-      <% end %>
+    <div>
+      <div class="cards">
+        <%# @viewings.each do |viewing| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%#= viewing.movie_info %>
+          <%# end %>
+        </div>
+      </div>
     </div>
+
+
 
     <div>
-      <%= image_tag('map_img1.png', size: "300x500") %>
+      <%#= image_tag('map_img1.png', size: "300x500") %>
     </div>
 
+  </div>
+</div> -->
+
+
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="cards">
+      <% @viewings.each do |viewing| %>
+        <%= link_to viewing_path(viewing) do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+            <%= viewing.movie_info %>
+          </div>
+          <% end %>
+      <% end %>
+    </div>
+    <%= image_tag('map_img1.png', size: "300x500") %>
   </div>
 </div>
