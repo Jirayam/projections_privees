@@ -1,15 +1,15 @@
 <div class ="container">
   <div class ="d-flex">
-    <%= image_tag('movie_poster.jpg', size: "300x500") %>
-    <div>
-      <h1><%= @viewing.movie_info %></h1>
+    <%= image_tag('movie_poster.jpg', size: "350x500") %>
+    <div class="mx-auto">
+      <h2><%= @viewing.user.username %> vous propose <%= @viewing.movie_info %></h2>
       <div class ="d-flex flex-column">
-        <h2><%= @viewing.date %></h2>
-        <p><%= link_to "edit", edit_host_viewing_path(@viewing)%></p>
+        <h4> le <%= @viewing.date %></h4>
+        <p><%= link_to "EDIT", edit_host_viewing_path(@viewing), class: "btn btn-primary"%></p>
       </div>
-      <div>
-        <img src="" alt="">
-        <%= link_to "Reservez maintenant!", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
+      <div class ="d-flex flex-column">
+        <%= image_tag('home-cinema-image-2.jpg', size: "700x300" ) %>
+        <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
