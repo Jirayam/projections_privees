@@ -11,22 +11,30 @@
       </div>
       <div class ="d-flex flex-column">
         <%= cl_image_tag(@viewing.user.photo, width: 400, height: 300, crop: :fill) %>
-        <% if current_user != @viewing.user %>
+
+        <% if current_user != @viewing.user && @places_nb > 0 %>
+          <p class="text-success mt-3">Il reste <%= @places_nb %> places</p>
           <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
+        <% elsif current_user != @viewing.user && @places_nb <= 0 %>
+          <p class="text-danger mt-3">Désolé il n'y a plus de place :(</p>
         <% else %>
-          <div class="bg-white mt-3 p-3">
-            <p> Tes inscrits à cette projection sont :</p>
-            <% @bookings.each do |booking| %>
-            <div>
-              <p><%= booking.user.username %></p>
-              <p>Status : <%= booking.progress %></p>
-              <% if !booking.accepted? %>
-              <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
-              <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+          <% if @bookings != [] %>
+            <div class="bg-white mt-3 p-3">
+              <p> Tes inscrits à cette projection sont :</p>
+              <% @bookings.each do |booking| %>
+              <div>
+                <p><%= booking.user.username %></p>
+                <p>Status : <%= booking.progress %></p>
+                <% if !booking.accepted? %>
+                <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
+                <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+                <% end %>
+              </div>
               <% end %>
             </div>
-            <% end %>
-          </div>
+          <% else %>
+            <p class="text-warning mt-3">Aucune demande pour le moment</p>
+          <% end %>
         <% end %>
       </div>
     </div>

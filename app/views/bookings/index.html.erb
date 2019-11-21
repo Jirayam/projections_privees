@@ -5,25 +5,21 @@
     <%= cl_image_tag(booking.viewing.user.photo, width: 400, height: 300, crop: :fill) %>
       <div class="card-product-infos ">
         <div>
-          <h2><%= booking.viewing.movie_info %></h2>
-          <p>La date de la projection: <%= booking.viewing.date %> à 21h</p>
-          <p>Le projectionneur est: <%= booking.user.username %></p>
+          <%= link_to viewing_path(booking.viewing) do %>
+            <h2><%= booking.viewing.movie_info %></h2>
+          <% end %>
+          <p>Date de la projection: <%= booking.viewing.date %> à 21h</p>
+          <p>Proposé par: <%= User.find(booking.viewing.user_id).username %></p>
+          <% if booking.progress == "accepted" %>
+            <p class="text-success"> Statut: <%= booking.progress %></p>
+          <% elsif booking.progress == "pending" %>
+            <p class="text-warning"> Statut: <%= booking.progress %></p>
+            <% else %>
+            <p> Statut: <%= booking.progress %></p>
+          <% end %>
         </div>
       </div>
-      <div>
-          <p> Statut: <%= booking.progress %></p>
-      </div>
   </div>
-  <% end %>
-
-
-  <% @bookings.each do |booking| %>
-    <%= link_to viewing_path(booking.viewing) do %>
-    <h2><%= booking.viewing.movie_info %></h2>
-    <% end %>
-    <p> Statut: <%= booking.progress %></p>
-    <p>La date de la projection: <%= booking.viewing.date %> à 21h</p>
-    <p>Le projectionneur est: <%= booking.user.username %></p>
   <% end %>
   <%= link_to "Retour à l'accueil", root_path %>
 </div>

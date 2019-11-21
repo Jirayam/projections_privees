@@ -14,5 +14,6 @@ class ViewingsController < ApplicationController
   def show
     @viewing = Viewing.find(params[:id])
     @bookings = Booking.where(viewing_id: params[:id])
+    @places_nb = @viewing.capacity - @bookings.count
   end
 end
