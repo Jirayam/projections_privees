@@ -29,6 +29,6 @@ class Host::ViewingsController < ApplicationController
   private
 
   def viewing_params
-    params.require(:viewing).permit(:movie_info, :capacity, :date, :price)
+    params.require(:viewing).permit(:movie_info, :capacity, :date, :price, :photo)
   end
 end
