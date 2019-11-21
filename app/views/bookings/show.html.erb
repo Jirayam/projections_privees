@@ -1,7 +1,9 @@
-<div class="container">
-  <h1>OK! Ta resa est bien enregistrée pour <%= @viewing.movie_info %> !</h1>
-  <p><%= @booking.progress %> </p>
-  <p>Ton hôte la validera (ou pas) très bientôt</p>
-  <p>Bonne séance !!</p>
-  <%= link_to "voir la liste de mes demandes", bookings_path, class: "btn btn-primary"  %>
+<div class="container d-flex justify-content-center">
+  <div class="confirm-booking">
+    <h1>OK!</h1>
+    <h2>Ta resa est bien enregistrée pour <%= @viewing.movie_info %> !</h2>
+    <p>Ton hôte la validera (ou pas)</p>
+    <p> très bientôt (ou pas)</p>
+    <%= link_to "voir la liste de mes demandes", bookings_path, class: "btn btn-primary"  %>
+  </div>
 </div>
