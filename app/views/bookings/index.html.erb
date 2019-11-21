@@ -1,6 +1,23 @@
 <div class="container">
   <h1>Liste des projections que tu as demandé</h1>
   <% @bookings.each do |booking| %>
+  <div class="card-product mt-3">
+    <%= cl_image_tag(booking.viewing.user.photo, width: 400, height: 300, crop: :fill) %>
+      <div class="card-product-infos ">
+        <div>
+          <h2><%= booking.viewing.movie_info %></h2>
+          <p>La date de la projection: <%= booking.viewing.date %> à 21h</p>
+          <p>Le projectionneur est: <%= booking.user.username %></p>
+        </div>
+      </div>
+      <div>
+          <p> Statut: <%= booking.progress %></p>
+      </div>
+  </div>
+  <% end %>
+
+
+  <% @bookings.each do |booking| %>
     <%= link_to viewing_path(booking.viewing) do %>
     <h2><%= booking.viewing.movie_info %></h2>
     <% end %>
