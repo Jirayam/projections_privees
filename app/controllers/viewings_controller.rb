@@ -1,6 +1,6 @@
 class ViewingsController < ApplicationController
   def index
-    @viewings = Viewing.all
+    #@viewings = Viewing.all
     @users = User.geocoded
     @markers = @users.map do |user|
       {
@@ -9,6 +9,13 @@ class ViewingsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { user: user })
       }
     end
+
+    if params[:query].present?
+      @viewings = Viewing.where("movie_info ILIKE ?", "%#{params[:query]}%")
+    else
+      @viewings = Viewing.all
+    end
+
   end
 
   def show
