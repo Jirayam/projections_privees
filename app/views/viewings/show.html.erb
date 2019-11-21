@@ -5,11 +5,29 @@
       <h2><%= @viewing.user.username %> vous propose <%= @viewing.movie_info %></h2>
       <div class ="d-flex flex-column">
         <h4> le <%= @viewing.date %></h4>
-        <p><%= link_to "EDIT", edit_host_viewing_path(@viewing), class: "btn btn-primary"%></p>
+        <% if current_user == @viewing.user %>
+          <p><%= link_to "EDIT", edit_host_viewing_path(@viewing), class: "btn btn-primary"%></p>
+        <% end %>
       </div>
       <div class ="d-flex flex-column">
         <%= image_tag('home-cinema-image-2.jpg', size: "700x300" ) %>
-        <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
+        <% if current_user != @viewing.user %>
+          <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
+        <% else %>
+          <div class="bg-white mt-3 p-3">
+            <p> Tes inscrits à cette projection sont :</p>
+            <% @bookings.each do |booking| %>
+            <div>
+              <p><%= booking.user.username %></p>
+              <p>Status : <%= booking.progress %></p>
+              <% if !booking.accepted? %>
+              <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
+              <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
