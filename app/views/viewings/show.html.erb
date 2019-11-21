@@ -8,7 +8,7 @@
         <p><%= link_to "EDIT", edit_host_viewing_path(@viewing), class: "btn btn-primary"%></p>
       </div>
       <div class ="d-flex flex-column">
-        <%= image_tag('home-cinema-image-2.jpg', size: "700x300" ) %>
+        <%= cl_image_tag(@viewing.user.photo, width: 400, height: 300, crop: :fill) %>
         <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
       </div>
     </div>
