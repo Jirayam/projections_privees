@@ -5,6 +5,6 @@ class ViewingsController < ApplicationController
 
   def show
     @viewing = Viewing.find(params[:id])
-    @booking = Booking.new
+    @bookings = Booking.where(viewing_id: params[:id])
   end
 end
