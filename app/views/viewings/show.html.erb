@@ -1,6 +1,6 @@
 <div class ="container">
   <div class ="d-flex">
-    <%= image_tag('movie_poster.jpg', size: "350x500") %>
+    <%= cl_image_tag(@viewing.photo, size: "350x500") %>
     <div class="mx-auto">
       <h2><%= @viewing.user.username %> vous propose <%= @viewing.movie_info %></h2>
       <div class ="d-flex flex-column">

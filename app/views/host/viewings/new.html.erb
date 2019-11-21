@@ -2,6 +2,8 @@
   <h1>Ajoute une projection:</h1>
   <%= simple_form_for [:host, @viewing] do |f| %>
     <%= f.input :movie_info %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :capacity %>
     <%= f.input :date %>
     <%= f.input :price %>
