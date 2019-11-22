@@ -1,0 +1,14 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(http://static.hitek.fr/img/actualite/w_home-cinema-1.jpg);">
+  <div class="container">
+    <h1>Projections Privées</h1>
+    <p>> <span id="banner-typed-text"></span></p>
+    <%= form_tag root_path, class: "search-form-control", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "trouver une projection"
+      %>
+      <%= submit_tag "Go!", class: "btn btn-flat" %>
+    <% end %>
+  </div>
+</div>
