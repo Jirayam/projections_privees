@@ -22,20 +22,20 @@
         <% if current_user && (current_user[:avatar] != nil) %>
             <%= cl_image_tag current_user.avatar, fetch_format: :auto, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Sign-out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              <%= link_to "Edit your profil", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "voir mes résa", bookings_path, class: "dropdown-item" %>
-              <%= link_to "créer une proj", new_host_viewing_path, class: "dropdown-item"  %>
-              <%= link_to "voir mes projs", host_bookings_path, class: "dropdown-item" %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Editer profil", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Mes réservations", bookings_path, class: "dropdown-item" %>
+              <%= link_to "Créer une projection", new_host_viewing_path, class: "dropdown-item"  %>
+              <%= link_to "Mes projections", host_bookings_path, class: "dropdown-item" %>
         <% elsif %>
         <% current_user && (current_user[:avatar] == nil) %>
               <%= image_tag('avatar_defaut.jpg', class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, height: 40, crop: :fit )  %>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Sign-out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              <%= link_to "Edit your profil", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "voir mes résa", bookings_path, class: "dropdown-item" %>
-              <%= link_to "créer une proj", new_host_viewing_path, class: "dropdown-item"  %>
-              <%= link_to "voir mes projs", host_bookings_path, class: "dropdown-item" %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Editer profil", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Mes réservations", bookings_path, class: "dropdown-item" %>
+              <%= link_to "Créer une projection", new_host_viewing_path, class: "dropdown-item"  %>
+              <%= link_to "Mes projections", host_bookings_path, class: "dropdown-item" %>
               </div>
         <% end %>
       </li>
