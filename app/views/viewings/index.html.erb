@@ -1,24 +1,3 @@
-<!-- <div class="container" id="custom-container" >
-  <div class="d-flex justify-content-between">
-
-    <div>
-      <div class="cards">
-        <%# @viewings.each do |viewing| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-          <%#= viewing.movie_info %>
-          <%# end %>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div>
-      <%#= image_tag('map_img1.png', size: "300x500") %>
-    </div>
-
-  </div>
-</div> -->
 <%= render 'shared/banner' %>
 <div class="container">
   <div class="d-flex justify-content-between">
@@ -30,12 +9,10 @@
           </div>
           <% end %>
       <% end %>
-    <!-- </div>
-    <#%= image_tag('map_img1.png', size: "300x500") %>
-  </div> -->
+    </div>
     <div
     id="map"
-    style="width: 300px;
+    style="width: 400px;
     height: 500px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"

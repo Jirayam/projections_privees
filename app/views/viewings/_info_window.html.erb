@@ -1,1 +1,7 @@
-<h2>MON CUL</h2>
+<% unless user.viewings.empty? %>
+  <h2><%= user.viewings.where('date >= ?', Date.today).first.movie_info %></h2>
+  <p><%= user.viewings.where('date >= ?', Date.today).first.date %></p>
+<% else %>
+  <h2><%= user.username %></h2>
+  <p>Aucune projection prévue prochainement</p>
+<% end %>
