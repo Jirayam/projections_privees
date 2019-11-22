@@ -27,11 +27,14 @@
       <% @bookings.each do |booking| %>
       <div class="cards-viewers-status">
         <p><%= booking.user.username %></p>
-        <p>Status : <%= booking.progress %></p>
+        <p>Status :<strong> <%= booking.progress %></strong></p>
         <% if !booking.accepted? %>
-        <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
-        <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+        <div class="d-flex content-center">
+          <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
+          <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+        </div>
         <% end %>
+
       </div>
       <% end %>
     </div>
