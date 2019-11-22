@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_162059) do
     t.string "username"
     t.text "equipement"
     t.string "photo"
-    t.string "avatar"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
