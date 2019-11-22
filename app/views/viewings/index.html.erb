@@ -1,20 +1,26 @@
 <%= render 'shared/banner' %>
-<div class="container">
-  <div class="d-flex justify-content-between">
-    <div class="cards">
-      <% @viewings.each do |viewing| %>
-        <%= link_to viewing_path(viewing) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= viewing.user.photo.url %>)">
-            <%= viewing.movie_info %>
+<div class="container-fluid">
+  <div class="d-flex justify-content-between mt-3">
+    <div class="container">
+      <div class="row">
+        <% @viewings.each do |viewing| %>
+          <div class="col-6">
+            <%= link_to viewing_path(viewing) do %>
+              <div class="card-category mb-3  " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= viewing.user.photo.url %>)">
+                <%= viewing.movie_info %>
+              </div>
+            <% end %>
           </div>
-          <% end %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
     <div
     id="map"
     style="width: 400px;
     height: 500px;"
     data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+    </div>
+  </div>
 </div>
