@@ -1,12 +1,12 @@
 class ViewingsController < ApplicationController
   def index
-    #@viewings = Viewing.all
     @users = User.geocoded
-    @markers = @users.map do |user|
+    @users_viewings = @users.select { |user| user.viewings != [] } # we can add=> && user.viewings.first.date >= Date.today
+    @markers = @users_viewings.map do |user_v|
       {
-        lat: user.latitude,
-        lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+        lat: user_v.latitude,
+        lng: user_v.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user_v: user_v})
       }
     end
 

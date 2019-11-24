@@ -1,51 +1,81 @@
 <div class ="container my-2">
-  <div class ="d-flex justify-content-between card-viewing">
-    <%= cl_image_tag(@viewing.photo, size: "350x500", class: "mt-3 ml-3") %>
-    <div class="card-infos-viewing flex-fill">
-      <h2><%= @viewing.user.username %> vous propose <%= @viewing.movie_info %></h2>
-      <div class="d-flex flex-column">
-        <p>pour une projection le <%= @viewing.date.day %>/<%= @viewing.date.month %>/ <%= @viewing.date.year %> à 21h15</p>
-        <% if current_user == @viewing.user %>
-          <p><%= link_to "EDIT", edit_host_viewing_path(@viewing), class: "btn btn-primary"%></p>
-        <% end %>
+  <div class ="card-viewing ">
+    <div class="row d-flex">
+      <div class="card-movie col-sd-12 col-md-12 col-lg-4 my-auto mx-auto text-center">
+      <%= cl_image_tag(@viewing.photo, size: "350x500") %>
       </div>
-      <div class="d-flex flex-column">
-        <%= cl_image_tag(@viewing.user.photo, width: 400, height: 300, crop: :fill, class: "home-cine") %>
-        <p class="text-center text-warning">Modeste contribution demandée de <%= @viewing.price %> €</p>
-        <% if user_signed_in? %>
-          <% if current_user != @viewing.user && @places_nb > 0 %>
-            <p class="text-success text-center">Il reste <%= @places_nb %> places</p>
-            <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary" %>
-          <% elsif current_user != @viewing.user && @places_nb <= 0 %>
-            <p class="text-danger mt-3">Désolé il n'y a plus de place :(</p>
-          <% else %>
-            <% if @bookings != [] %>
-      </div>
-    </div>
-    <div class="m-2 p-1 infos-bookings">
-      <p class="text-white"> Inscrits à cette projection</p>
-      <% @bookings.each do |booking| %>
-      <div class="cards-viewers-status">
-        <p><%= booking.user.username %></p>
-        <p>Status :<strong> <%= booking.progress %></strong></p>
-        <% if !booking.accepted? %>
-        <div class="d-flex content-center">
-          <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
-          <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+
+      <div class="card-infos-viewing col-sd-12 col-md-12 col-lg-6 p-1 mx-auto">
+        <h2><%= @viewing.user.username %> vous propose <%= @viewing.movie_info %></h2>
+
+        <div class="d-flex flex-column">
+          <p>pour une projection le <%= @viewing.date.day %>/<%= @viewing.date.month %>/ <%= @viewing.date.year %> à 21h15</p>
+
+          <% if current_user == @viewing.user %>
+            <p><%= link_to "EDIT", edit_host_viewing_path(@viewing), class: "btn btn-primary"%></p>
+          <% end %>
+
         </div>
-        <% end %>
+
+
+          <div class="d-flex flex-column">
+            <%= cl_image_tag(@viewing.user.photo, width: 400, height: 300, crop: :fill, class: "home-cine") %>
+            <p class="text-center text-warning">Modeste contribution demandée de <%= @viewing.price %> €</p>
+
+          <% if user_signed_in? %>
+
+            <% if current_user != @viewing.user && @places_nb > 0 %>
+
+              <p class="text-success text-center">Il reste <%= @places_nb %> places</p>
+              <%= link_to "Je réserve ma place !", viewing_bookings_path(@viewing), method: :post, class: "btn btn-primary m-3 p-1" %>
+
+            <% elsif current_user != @viewing.user && @places_nb <= 0 %>
+
+              <p class="text-danger mt-3">Désolé il n'y a plus de place :(</p>
+
+            <% else %>
+              <% if current_user == @viewing.user && @bookings != [] %>
+          </div>
 
       </div>
+      <div class="mx-auto col-sd-12 col-md-12 col-lg-12">
+        <div class="infos-bookings mx-auto p-2 text-center">
+          <p class="text-white"> Inscrits à cette projection</p>
+          <% @bookings.each do |booking| %>
+
+          <div class="cards-viewers-status">
+            <p><%= booking.user.username %></p>
+            <p>Status :<strong> <%= booking.progress %></strong></p>
+
+            <% if !booking.accepted? %>
+              <div class="d-flex justify-content-center">
+
+                <%= link_to "accepter", viewing_booking_path(@viewing, booking), method: :patch, class: "btn btn-success" %>
+                <%= link_to "rejeter", viewing_booking_path(@viewing, booking), method: :delete, class: "btn btn-warning" %>
+              </div>
+            <% end %>
+          </div>
       <% end %>
+        </div>
+      </div>
+
+    <% else %>
+
+      <p class="text-warning mt-3">Aucune demande pour le moment</p>
+    <% end %>
+
+            <% end %>
+
+          <% else %>
+
+          <%= link_to "crée-toi un compte pour reserver une place", new_user_registration_path, class: "btn btn-warning mt-3"  %>
+
+          <% end %>
+
+        </div>
+
+      </div>
+
     </div>
-  <% else %>
-    <p class="text-warning mt-3">Aucune demande pour le moment</p>
-  <% end %>
-<% end %>
-<% else %>
-<%= link_to "crée-toi un compte pour reserver une place", new_user_registration_path, class: "btn btn-warning mt-3"  %>
-<% end %>
   </div>
-</div>
-</div>
 </div>

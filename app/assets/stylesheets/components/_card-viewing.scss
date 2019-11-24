@@ -1,11 +1,20 @@
 .card-viewing {
-background-color: #48435c;
-border-radius: 5px;
-margin-bottom: 70px;
-margin-top: 10px;
+  background-color: #48435c;
+  border-radius: 5px;
+  margin-bottom: 70px;
+  margin-top: 10px;
+
 }
 
-.card-viewing > img {
+.card-movie {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card-viewing img {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
+  margin-top: 16px
 }

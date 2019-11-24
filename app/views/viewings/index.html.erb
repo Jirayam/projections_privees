@@ -1,10 +1,10 @@
 <%= render 'shared/banner' %>
 <div class="container-fluid">
-  <div class="d-flex justify-content-between mt-3">
-    <div class="container">
+  <div class="d-flex justify-content-between mt-3 row">
+    <div class="container col-sd-12 col-md-8">
       <div class="row">
         <% @viewings.each do |viewing| %>
-          <div class="col-6">
+          <div class="col-lg-6 col-md-6 col-sd-12">
             <%= link_to viewing_path(viewing) do %>
               <div class="card-category mb-3  " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= viewing.user.photo.url %>)">
                 <%= viewing.movie_info %>
@@ -16,6 +16,7 @@
     </div>
     <div
     id="map"
+    class="col-sd-12 col-md-4 mx-auto"
     style="width: 400px;
     height: 500px;"
     data-markers="<%= @markers.to_json %>"
