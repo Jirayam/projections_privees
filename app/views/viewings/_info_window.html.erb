@@ -1,7 +1,7 @@
-<% unless user.viewings.empty? %>
-  <h2><%= user.viewings.where('date >= ?', Date.today).first.movie_info %></h2>
-  <p><%= user.viewings.where('date >= ?', Date.today).first.date %></p>
-<% else %>
-  <h2><%= user.username %></h2>
-  <p>Aucune projection prévue prochainement</p>
-<% end %>
+<h3>
+  <%= link_to viewing_path(user_v.viewings.first.id) do %>
+  <%= user_v.viewings.first.movie_info %>
+  <% end %>
+</h3>
+<p>porposé par: <%= user_v.viewings.first.user.username %></p>
+<p>Date: <%= user_v.viewings.first.date %></p>
